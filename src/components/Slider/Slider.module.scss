@@ -1,0 +1,156 @@
+@use '../../styles/mixins/mixins' as *;
+
+.slider {
+  display: grid;
+  grid-template-columns: subgrid;
+
+  grid-column: 1 / -1;
+}
+
+.banner {
+  grid-column: 2 / -2;
+
+  display: grid;
+  grid-template-columns: 45% 55%;
+  aspect-ratio: 2.6 / 1;
+
+  background-color: #000;
+  overflow: hidden;
+
+  container-type: inline-size;
+}
+
+.bannerProduct {
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-align: center;
+
+  img {
+    display: block;
+    position: static;
+    width: 85%;
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+  }
+}
+
+.bannerContent {
+  margin: 14px;
+  border-radius: 24px;
+  background: #222;
+
+  padding: clamp(12px, 3cqw, 50px);
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  button {
+    margin-top: auto;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #fff;
+
+    padding: 5% 10%;
+
+    border: 2px solid #444;
+    border-radius: 50px;
+
+    transition: border-color .3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  h2 {
+    font-weight: 800;
+    font-size: clamp(20px, 4.23cqw, 88px);
+    letter-spacing: 0%;
+
+    background: linear-gradient(75.28deg,
+        #891ce8 -22.43%,
+        #7560fa 35.22%,
+        #e963ff 100.1%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    img {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
+    }
+  }
+
+  p {
+    color: #aeaeae;
+    font-weight: 700;
+    font-size: clamp(12px, 1.54cqw, 32px);
+    letter-spacing: 0%;
+  }
+}
+
+.productInfo {
+  position: relative;
+  z-index: 2;
+  padding-top: 5%;
+
+  h3 {
+    color: #fff;
+    margin: 0;
+    font-size: clamp(16px, 3.5cqw, 72px);
+    font-weight: 700;
+  }
+
+  p {
+    margin: 8px 0;
+    color: #9b9b9b;
+    font-weight: 400;
+    font-size: clamp(12px, 1.54cqw, 32px);
+  }
+}
+
+.navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: span 1;
+  border: 1px solid #b4bdc3;
+  box-sizing: border-box;
+
+  transition: .3s;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &::after {
+    content: '';
+
+    width: 16px;
+    height: 16px;
+  }
+
+  &Left {
+    &::after {
+      background-image: url(../../assets/icons/arrowLeft.svg);
+    }
+  }
+
+  &Right {
+    &::after {
+      background-image: url(../../assets/icons/arrowRight.svg);
+    }
+  }
+}

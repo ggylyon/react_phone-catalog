@@ -1,0 +1,11 @@
+$screen-sizes: 1200 'desktop', 640 'tablet';
+
+@mixin on($screen-type) {
+  @each $width, $type in $screen-sizes {
+    @if $type == $screen-type {
+      @media (min-width: #{$width}px) {
+        @content;
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+@use '../styles/mixins/mixins' as *;
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family: Mont, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img, picture, video, canvas, svg, embed, iframe, object, audio {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg[width][height] {
+  max-width: revert;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
+
+button,
+[role="button"],
+label,
+summary,
+select {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  font-weight: inherit;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub { bottom: -0.25em; }
+
+sup { top: -0.5em; }
+
+pre, code, kbd, samp {
+  font-family: monospace;
+  font-size: inherit;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: none;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-inline: 16px;
+  gap: 16px;
+
+  @include on("tablet") {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+  }
+
+  @include on("desktop") {
+    grid-template-columns: repeat(24, 32px);
+    padding-inline: 0;
+
+    justify-content: center;
+  }
+}

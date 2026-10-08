@@ -1,0 +1,305 @@
+@use '../../styles/mixins/mixins' as *;
+
+@keyframes underline-scale {
+  from {
+    transform: scaleX(0);
+  } to {
+    transform: scaleX(1);
+  }
+}
+
+
+.header {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 48px;
+
+  border-bottom: 1px solid #e2e6e9;
+  background-color: #fff;
+
+  @include on('desktop') {
+    height: 64px;
+  }
+}
+
+.headerLeft,
+.headerRight {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+  min-width: 0;
+}
+
+.headerLeft {
+  flex: 1;
+  gap: 16px;
+
+  @include on('desktop') {
+    gap: 24px;
+  }
+}
+
+.headerRight {
+  flex-shrink: 0;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  height: 100%;
+  padding-inline: 16px;
+
+  @include on('desktop') {
+    padding-inline: 24px;
+  }
+}
+
+.logo {
+  display: block;
+
+  width: 64px;
+  height: auto;
+
+  @include on('desktop') {
+    width: 80px;
+  }
+}
+
+.desktopNavigation {
+  display: none;
+  min-width: 0;
+  height: 100%;
+
+  @include on('tablet') {
+    display: block;
+  }
+}
+
+.desktopActions {
+  display: none;
+  height: 100%;
+
+  @include on('tablet') {
+    display: flex;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  ul {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+
+    list-style: none;
+
+    @include on('desktop') {
+      gap: 64px;
+    }
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+  }
+}
+
+.navigationLink {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  color: #89939a;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.04em;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+
+.navigationLinkActive {
+  color: #313237;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 3px;
+    animation: underline-scale .2s;
+    background-color: #313237;
+  }
+}
+
+
+
+.actionButton {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  padding: 0;
+  border: 0;
+  border-left: 1px solid #e2e6e9;
+
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  @include on('desktop') {
+    width: 64px;
+    height: 64px;
+  }
+
+  img {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.actionButtonActive {
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 3px;
+
+    background-color: #313237;
+    animation: underline-scale .2s;
+  }
+}
+
+.menuButton {
+  display: flex;
+
+  @include on('tablet') {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 48px 0 0;
+
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  overflow-y: auto;
+
+  background-color: #fff;
+  z-index: 100;
+
+  @include on('tablet') {
+    display: none;
+  }
+}
+
+.mobileNavigation {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  padding: 24px 16px 16px;
+
+  .navigation {
+    display: block;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .navigation ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    gap: 16px;
+  }
+
+  .navigation li {
+    display: block;
+
+    width: auto;
+    height: auto;
+  }
+
+  .navigationLink {
+    width: max-content;
+    height: auto;
+    padding-block: 8px;
+  }
+}
+
+.mobileActions {
+  display: flex;
+
+  width: 100%;
+  margin-top: auto;
+
+  border-top: 1px solid #e2e6e9;
+
+  background-color: #fff;
+
+  .actionButton {
+    flex: 1;
+
+    width: auto;
+    height: 64px;
+
+    border-left: 1px solid #e2e6e9;
+
+    &:first-child {
+      border-left: 0;
+    }
+  }
+}
